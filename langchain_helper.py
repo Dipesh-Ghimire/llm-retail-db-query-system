@@ -11,10 +11,12 @@ from few_shots import few_shots_list
 import os
 from dotenv import load_dotenv
 load_dotenv()
+import streamlit as st
 
 
 def get_few_shot_db_chain():
-    llm = GoogleGenerativeAI(model='gemini-pro',google_api_key=os.environ['GOOGLE_API_KEY'],temperature=0.1)
+    google_api_key = st.secrets["general"]["GOOGLE_API_KEY"] or os.environ['GOOGLE_API_KEY']
+    llm = GoogleGenerativeAI(model='gemini-pro',google_api_key=google_api_key,temperature=0.1)
     db_user = 'root'
     db_password = 'password'
     db_host = 'localhost'
