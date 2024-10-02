@@ -17,11 +17,12 @@ import streamlit as st
 def get_few_shot_db_chain():
     google_api_key = st.secrets["general"]["GOOGLE_API_KEY"] or os.environ['GOOGLE_API_KEY']
     llm = GoogleGenerativeAI(model='gemini-pro',google_api_key=google_api_key,temperature=0.1)
-    db_user = 'root'
-    db_password = 'password'
-    db_host = 'localhost'
-    db_name = 'neptech_store'
-    db = SQLDatabase.from_uri(f"mysql+pymysql://{db_user}:{db_password}@{db_host}/{db_name}",sample_rows_in_table_info=3)
+    db_user = 'sql12734939'or'root'
+    db_password = '4aFry2NP3E'or'password'
+    db_host = 'sql12.freemysqlhosting.net'or'localhost'
+    db_name = 'sql12734939'or'neptech_store'
+    db_port = 3306
+    db = SQLDatabase.from_uri(f"mysql+pymysql://{db_user}:{db_password}@{db_host}:{db_port}/{db_name}",sample_rows_in_table_info=3)
 
     embeddings = HuggingFaceEmbeddings(model_name='sentence-transformers/all-MiniLM-L6-v2')
     to_vectorize = [" ".join(i.values()) for i in few_shots_list]
