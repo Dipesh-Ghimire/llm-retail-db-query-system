@@ -15,7 +15,8 @@ import streamlit as st
 
 
 def get_few_shot_db_chain():
-    google_api_key = st.secrets["general"]["GOOGLE_API_KEY"] or os.environ['GOOGLE_API_KEY']
+    #google_api_key = st.secrets["general"]["GOOGLE_API_KEY"]
+    google_api_key = os.environ['GOOGLE_API_KEY']
     llm = GoogleGenerativeAI(model='gemini-pro',google_api_key=google_api_key,temperature=0.1)
     db_user = 'sql12734939'or'root'
     db_password = '4aFry2NP3E'or'password'
@@ -41,7 +42,7 @@ def get_few_shot_db_chain():
         suffix=PROMPT_SUFFIX,
         input_variables=["input", "table_info", "top_k"]
     )
-    new_chain = SQLDatabaseChain.from_llm(llm=llm, db=db, verbose=True, prompt=few_shot_prompt)
+    new_chain = SQLDatabaseChain.from_llm(llm=llm, db=db, verbose=True, prompt=few_shot_prompt, return_intermediate_steps=True)
     return new_chain
 
 if __name__=="__main__":
