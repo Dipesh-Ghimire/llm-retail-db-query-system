@@ -1,8 +1,6 @@
 # NepTech Store: Talk to a Database  
 ![alt text](screenshot.png)
-[text](demo.webm)
-This is an end-to-end LLM project based on Langchain and Google Gemini (Generative AI). I built a system that can talk to a MySQL database.  
-The user asks questions in natural language, and the system generates answers by converting those questions into SQL queries and then executing that query on the MySQL database.  
+This is an end-to-end LLM project based on Langchain and Google Gemini (Generative AI). I developed a system that interacts with a MySQL database, allowing users to ask questions in natural language and receive answers by converting those queries into SQL statements, which are then executed on the database.
 NepTech Store is a laptop store where they maintain their inventory, sales, and discounts data in the MySQL database. A store manager may ask questions such as:
 - How many Asus laptops with 8GB RAM and 512GB SSD are left in stock?
 - What will be the total sales value if I sell all laptops with i7 processors after applying discounts?
@@ -21,4 +19,4 @@ The system is intelligent enough to generate accurate queries for a given questi
   - Langchain framework
   - Chromadb as a vector store
   - Few-shot learning
-- In the UI, the store manager will ask questions in natural language, and it will produce the answers.
+- In the UI, the store manager will ask questions in natural language, and it will produce the answers with SQL Query for verification.
